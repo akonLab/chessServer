@@ -1,11 +1,79 @@
 <%@include file="../lib(header&footer)/mainHead.jsp"%>
+<div style="width: 100%; margin-bottom: -3%">
+    <h5 style="color: white; text-align: center">${mess1}</h5>
+    <div id='turn'>It's Whites Turn!</div>
+</div>
 
     <div class="box d-flex justify-content-around p-5">
-        <div class="chess mx-auto">
-            <img class="mx-auto" style="width: 80%;" src="https://betacssjs.chesscomfiles.com/bundles/web/images/offline-play/standardboard.png" alt="">
+        <div class="chess mx-auto" >
+            <div id="game"  style="border-radius: 15px !important; background: rgba(98, 30, 66, 0.63) !important; box-shadow: 0 15px 25px #eedef9e1;">
+                <div class='gamecell purple' id='1_8'></div>
+                <div class='gamecell grey' id='2_8'></div>
+                <div class='gamecell purple' id='3_8'></div>
+                <div class='gamecell grey' id='4_8'></div>
+                <div class='gamecell purple' id='5_8'></div>
+                <div class='gamecell grey' id='6_8'></div>
+                <div class='gamecell purple' id='7_8'></div>
+                <div class='gamecell grey' id='8_8'></div>
+                <div class='gamecell grey' id='1_7'></div>
+                <div class='gamecell purple' id='2_7'></div>
+                <div class='gamecell grey' id='3_7'></div>
+                <div class='gamecell purple' id='4_7'></div>
+                <div class='gamecell grey' id='5_7'></div>
+                <div class='gamecell purple' id='6_7'></div>
+                <div class='gamecell grey' id='7_7'></div>
+                <div class='gamecell purple' id='8_7'></div>
+                <div class='gamecell purple' id='1_6'></div>
+                <div class='gamecell grey' id='2_6'></div>
+                <div class='gamecell purple' id='3_6'></div>
+                <div class='gamecell grey' id='4_6'></div>
+                <div class='gamecell purple' id='5_6'></div>
+                <div class='gamecell grey' id='6_6'></div>
+                <div class='gamecell purple' id='7_6'></div>
+                <div class='gamecell grey' id='8_6'></div>
+                <div class='gamecell grey' id='1_5'></div>
+                <div class='gamecell purple' id='2_5'></div>
+                <div class='gamecell grey' id='3_5'></div>
+                <div class='gamecell purple' id='4_5'></div>
+                <div class='gamecell grey' id='5_5'></div>
+                <div class='gamecell purple' id='6_5'></div>
+                <div class='gamecell grey' id='7_5'></div>
+                <div class='gamecell purple' id='8_5'></div>
+                <div class='gamecell purple' id='1_4'></div>
+                <div class='gamecell grey' id='2_4'></div>
+                <div class='gamecell purple' id='3_4'></div>
+                <div class='gamecell grey' id='4_4'></div>
+                <div class='gamecell purple' id='5_4'></div>
+                <div class='gamecell grey' id='6_4'></div>
+                <div class='gamecell purple' id='7_4'></div>
+                <div class='gamecell grey' id='8_4'></div>
+                <div class='gamecell grey' id='1_3'></div>
+                <div class='gamecell purple' id='2_3'></div>
+                <div class='gamecell grey' id='3_3'></div>
+                <div class='gamecell purple' id='4_3'></div>
+                <div class='gamecell grey' id='5_3'></div>
+                <div class='gamecell purple' id='6_3'></div>
+                <div class='gamecell grey' id='7_3'></div>
+                <div class='gamecell purple' id='8_3'></div>
+                <div class='gamecell purple' id='1_2'></div>
+                <div class='gamecell grey' id='2_2'></div>
+                <div class='gamecell purple' id='3_2'></div>
+                <div class='gamecell grey' id='4_2'></div>
+                <div class='gamecell purple' id='5_2'></div>
+                <div class='gamecell grey' id='6_2'></div>
+                <div class='gamecell purple' id='7_2'></div>
+                <div class='gamecell grey' id='8_2'></div>
+                <div class='gamecell grey' id='1_1'></div>
+                <div class='gamecell purple' id='2_1'></div>
+                <div class='gamecell grey' id='3_1'></div>
+                <div class='gamecell purple' id='4_1'></div>
+                <div class='gamecell grey' id='5_1'></div>
+                <div class='gamecell purple' id='6_1'></div>
+                <div class='gamecell grey' id='7_1'></div>
+                <div class='gamecell purple' id='8_1'></div>
+            </div>
 
         </div>
-
         <div class="chat ">
             <div class="container-fluid h-100">
                 <div class="row justify-content-center h-100">

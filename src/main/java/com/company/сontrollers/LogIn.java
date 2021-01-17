@@ -15,19 +15,21 @@ public class LogIn extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String status = request.getParameter("chess");
+
+        String mess1;
+
+        if(status.equals("white")){
+            mess1 = "Server choose white, server plays with black";
+        }
+        else
+            mess1 = "Server choose black, server plays with white";
 
         UserDB userDao = UserDB.getInstance();
         User user = userDao.getUserByEmail(email);
         if(user!=null){
             if(user.getPassword().equals(password)){
-                String status = request.getParameter("chess");
-                HttpSession session = request.getSession(true);
-                session.setAttribute("user",user);
-                session.setAttribute("status", status);
-                session.setMaxInactiveInterval(60);
-                Cookie ck=new Cookie("email",email);
-                response.addCookie(ck);
-
+                request.setAttribute("mess1", mess1);
                 request.getRequestDispatcher("jsp/chat.jsp").forward(request, response);
             }else{
                 String mess = "Incorrect password, try again!!!";

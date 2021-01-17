@@ -48,11 +48,11 @@
             <p style="color: #FEC061;">Choose chess color</p>
             <div class="row d-flex justify-content-around">
                 <div>
-                    <input type="radio" name="chess" checked>
+                    <input type="radio" name="chess" checked value="white">
                     <label style="color: white;">&#9819;</label>
                 </div>
                 <div>
-                    <input type="radio" name="chess">
+                    <input type="radio" name="chess" value="black">
                     <label>&#9819;</label>
                 </div>
 
