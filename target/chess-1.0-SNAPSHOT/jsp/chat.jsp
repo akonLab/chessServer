@@ -106,7 +106,7 @@
                         <div class="card-body msg_card_body">
                             <c:forEach var="message" items="${messages}">
 
-                                <c:if test="${message.form==sessionScope.user}">
+                                <c:if test="${message.form==pageContext.session.id}">
                                     <div class="d-flex justify-content-end mb-4 ml-5">
                                         <div class="msg_cotainer_send">
                                             <c:if test="${message.file!=null}">some file was uploaded</c:if>
@@ -117,7 +117,7 @@
                                     </div>
                                 </c:if>
 
-                                <c:if test="${message.from!=sessionScope.user}">
+                                <c:if test="${message.from!=pageContext.session.id}">
                                     <div class="d-flex justify-content-start mb-4 mr-5">
                                         <div class="msg_cotainer">
                                             <c:if test="${message.file!=null}">some file was uploaded</c:if>
@@ -128,16 +128,6 @@
                                     </div>
                                 </c:if>
 
-                                <c:if test="${message.form==sessionScope.user}">
-                                    <div class="d-flex justify-content-end mb-4 ml-5">
-                                        <div class="msg_cotainer_send">
-                                            <c:if test="${message.file!=null}">some file was uploaded</c:if>
-don;t have from
-                                                ${message.message}
-                                            <span class="msg_time_send">${message.date}</span>
-                                        </div>
-                                    </div>
-                                </c:if>
                             </c:forEach>
                             <!--
                                 server dialogue
@@ -179,7 +169,7 @@ don;t have from
 
                                 <!--real hidden btn-->
                                 <div hidden>
-                                    <input type="text" name="from" value="${sessionScope.user}">
+                                    <input type="text" name="from" value="${pageContext.session.id}">
                                     <input type="file" id="fileInputBtn" name="file">
                                     <input type="submit" id="sendBtn">
                                 </div>

@@ -1,0 +1,34 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(https://www.psvidler.net/wp-content/uploads/2019/06/unique-chess-sets.jpg) center / cover no-repeat !important;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+@media(max-width:714px) {
+    .box {
+        flex-direction: column;
+    }
+    .chess {
+        margin: 0 auto;
+        height: 45vmax;
+        width: 45vmax;
+    }
+    .chat {
+        height: 45vmax;
+        width: 100%;
+        margin: auto 0;
+    }
+}

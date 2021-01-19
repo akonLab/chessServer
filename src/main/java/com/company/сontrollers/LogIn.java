@@ -19,24 +19,29 @@ public class LogIn extends HttpServlet {
 
         String mess1;
 
-        if(status.equals("white")){
+        if (status.equals("white")) {
             mess1 = "Server choose white, server plays with black";
-        }
-        else
+        } else
             mess1 = "Server choose black, server plays with white";
+//mess1=(status.equals("white"))?"Server choose white, server plays with black":"Server choose black, server plays with white";
 
         UserDB userDao = UserDB.getInstance();
         User user = userDao.getUserByEmail(email);
-        if(user!=null){
-            if(user.getPassword().equals(password)){
+        if (user != null) {
+            if (user.getPassword().equals(password)) {
                 request.setAttribute("mess1", mess1);
+
+                //session
+                HttpSession session = request.getSession();
+                session.setAttribute("user", (user.getEmail().equals("player@mail.com")) ? "client" : "server");
+
                 request.getRequestDispatcher("jsp/chat.jsp").forward(request, response);
-            }else{
+            } else {
                 String mess = "Incorrect password, try again!!!";
                 request.setAttribute("mess", mess);
                 request.getRequestDispatcher("jsp/log.jsp").forward(request, response);
             }
-        }else{
+        } else {
             String mess = "Incorrect username, try again!!!";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("jsp/log.jsp").forward(request, response);
