@@ -83,6 +83,11 @@
         <div class="container-fluid h-100">
             <div class="row justify-content-center h-100">
                 <!--col-md-8 col-xl-6-->
+                <div class="row justify-content-around">
+                    <a href="${pageContext.request.contextPath}/chat?action=refresh">Refresh</a>
+                    <a href="${pageContext.request.contextPath}/chat?action=stop">Stop</a>
+                </div>
+
                 <div class=" chat">
                     <div class="card">
                         <!--chat header-->
@@ -180,6 +185,7 @@ don;t have from
                                 <!--real hidden btn-->
                                 <div hidden>
                                     <input type="text" name="from" value="${sessionScope.user}">
+                                    <input type="text" name="from" value="send">
                                     <input type="file" id="fileInputBtn" name="file">
                                     <input type="submit" id="sendBtn">
                                 </div>
