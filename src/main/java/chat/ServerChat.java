@@ -15,6 +15,15 @@ public class ServerChat extends Thread {
     private static ObjectInputStream in;
     private static ObjectOutputStream out;
 
+    boolean runCon = false;
+
+    public ServerChat() {
+        if (!runCon) {
+            start();
+            runCon=true;
+        }
+    }
+
     @Override
     public void run() {
         try {

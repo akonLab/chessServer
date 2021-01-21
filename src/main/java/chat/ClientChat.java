@@ -15,6 +15,14 @@ public class ClientChat extends Thread {
 
     private static ObjectInputStream in;
     private static ObjectOutputStream out;
+    boolean runCon = false;
+
+    public ClientChat() {
+        if (!runCon) {
+            start();
+            runCon=true;
+        }
+    }
 
     @Override
     public void run() {

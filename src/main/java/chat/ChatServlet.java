@@ -17,6 +17,12 @@ import java.util.Locale;
 @MultipartConfig
 public class ChatServlet extends HttpServlet {
     ArrayList<Message> messages = new ArrayList<>();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm a, dd MMM", Locale.ENGLISH);
+
+    boolean clientCon = false;
+    boolean serverCon = false;
+    ClientChat clientChat;
+    ServerChat serverChat;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,34 +34,40 @@ public class ChatServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Part file = req.getPart("file");
-        // String fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-        // InputStream fileContent = file.getInputStream();
-
         String from = req.getParameter("from");
-
         String text = req.getParameter("textInput");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm a, dd MMM", Locale.ENGLISH);
 
         System.out.println(file);
         System.out.println(text);
 
         if (from.equals("server")) {
-            ServerChat serverChat = new ServerChat();
-            serverChat.start();
-
-            serverChat.serverSend(text, file, dateFormat.format(Calendar.getInstance().getTime()));
-            messages.add(serverChat.serverGet());
-        }else {
-            ClientChat clientChat=new ClientChat();
-            clientChat.start();
-
-            clientChat.clientSend(text, file, dateFormat.format(Calendar.getInstance().getTime()));
-            messages.add(clientChat.clientGet());
+            servCon(text,file);
+        } else {
+            clientCon(text,file);
         }
         //messages.add(new Message(text, file, dateFormat.format(Calendar.getInstance().getTime())));
 
         req.setAttribute("messages", messages);
+        System.out.println(messages);
         req.getRequestDispatcher("jsp/chat.jsp").forward(req, resp);
+    }
+
+    void servCon(String text,Part file) {
+        if (!serverCon) {
+            serverChat = new ServerChat();
+            serverCon = true;
+        }
+        serverChat.serverSend(text, file, dateFormat.format(Calendar.getInstance().getTime()));
+        messages.add(serverChat.serverGet());
+    }
+
+    void clientCon(String text,Part file) {
+        if (!clientCon) {
+            clientChat = new ClientChat();
+            clientCon = true;
+        }
+        clientChat.clientSend(text, file, dateFormat.format(Calendar.getInstance().getTime()));
+        messages.add(clientChat.clientGet());
     }
 
 }
@@ -63,3 +75,5 @@ public class ChatServlet extends HttpServlet {
 SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm a, dd MMM", Locale.ENGLISH);
 req.setAttribute("time", dateFormat.format(Calendar.getInstance().getTime()));
  */
+// String fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+// InputStream fileContent = file.getInputStream();
